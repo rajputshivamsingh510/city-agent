@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Intelligence Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="console">
+
+  <!-- ===================== SIDEBAR / DISPATCH PANEL ===================== -->
+  <aside class="tower">
+    <div class="tower-brand">
+      <span class="tower-dot" id="tower-dot"></span>
+      <div>
+        <div class="tower-title">City Intelligence</div>
+        <div class="tower-subtitle">Dispatch Console</div>
+      </div>
+    </div>
+
+    <div class="tower-section">
+      <div class="tower-label">Session</div>
+      <div class="tower-id" id="session-id-display">—</div>
+    </div>
+
+    <div class="tower-section">
+      <div class="tower-label">Feeds Online</div>
+      <ul class="tower-feeds">
+        <li>
+          <span class="feed-dot feed-dot--live"></span>
+          <span class="feed-name">Weather</span>
+          <span class="feed-tag">get_weather</span>
+        </li>
+        <li>
+          <span class="feed-dot feed-dot--live"></span>
+          <span class="feed-name">News</span>
+          <span class="feed-tag">get_news</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tower-section">
+      <div class="tower-label">Clearance Protocol</div>
+      <p class="tower-note">
+        Every tool call is held for manual clearance before it runs.
+        Approve or deny each request as it appears in the log.
+      </p>
+    </div>
+
+    <button class="tower-reset" id="reset-btn">Clear session</button>
+  </aside>
+
+  <!-- ===================== MAIN CHAT COLUMN ===================== -->
+  <main class="deck">
+
+    <header class="deck-header">
+      <div>
+        <h1>City Intelligence Assistant</h1>
+        <p>Ask about weather or the latest news for any city.</p>
+      </div>
+      <div class="deck-status" id="deck-status">
+        <span class="status-pill status-pill--ready" id="status-pill">Ready</span>
+      </div>
+    </header>
+
+    <div class="deck-log" id="chat-log">
+      <div class="log-entry log-entry--system">
+        <div class="log-bubble log-bubble--system">
+          Console online. Try <em>"What's the weather in Ludhiana?"</em>
+          or <em>"Latest news in Tokyo"</em>.
+        </div>
+      </div>
+    </div>
+
+    <form class="deck-input" id="chat-form">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Ask about a city's weather or news…"
+        autocomplete="off"
+        autofocus
+      />
+      <button type="submit" id="send-btn">
+        <span>Send</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M4 12H20M20 12L13 5M20 12L13 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
